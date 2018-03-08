@@ -13,7 +13,7 @@ Media type formatter for MessagePack.
 [Change logs][changeLog] | [Project Repository][projectUri]
 
 ## Installation
-Available for [.NET Standard 1.4+](https://docs.microsoft.com/en-gb/dotnet/standard/net-standard)
+Available for [.NET Standard 2.0+](https://docs.microsoft.com/en-gb/dotnet/standard/net-standard)
 
 ### NuGet
 ```
@@ -28,15 +28,8 @@ PM> Install-Package Sketch7.MessagePack.MediaTypeFormatter
 
 ## Usage
 
-### Configure
-Add services via `.AddFluentlyHttpClient()`.
-
 ```cs
-// using Startup.cs (can be elsewhere)
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddFluentlyHttpClient();
-}
+var messagePackMediaTypeFormatter = new MessagePackMediaTypeFormatter(ContractlessStandardResolver.Instance);
 ```
 
 ## Contributing

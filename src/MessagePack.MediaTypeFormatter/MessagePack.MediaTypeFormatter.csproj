@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
-    <Description>Media type formatter for MessagePack..</Description>
+    <Description>Media type formatter for MessagePack.</Description>
     <Product>MessagePack.MediaTypeFormatter</Product>
     <Company>Sketch7</Company>
     <Authors>Stephen Lautier</Authors>

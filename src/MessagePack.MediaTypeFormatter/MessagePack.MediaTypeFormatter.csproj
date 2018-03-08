@@ -6,7 +6,7 @@
     <Product>MessagePack.MediaTypeFormatter</Product>
     <Company>Sketch7</Company>
     <Authors>Stephen Lautier</Authors>
-    <PackageTags>messagepack mediatypeformatter http</PackageTags>
+    <PackageTags>messagepack mediatypeformatter http serializer</PackageTags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/sketch7/MessagePack.MediaTypeFormatter.git</RepositoryUrl>

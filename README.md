@@ -4,7 +4,7 @@
 
 # MessagePack MediaTypeFormatter
 [![CircleCI](https://circleci.com/gh/sketch7/MessagePack.MediaTypeFormatter.svg?style=shield)](https://circleci.com/gh/sketch7/MessagePack.MediaTypeFormatter)
-[![NuGet version](https://badge.fury.io/nu/MessagePack.MediaTypeFormatter.svg)](https://badge.fury.io/nu/MessagePack.MediaTypeFormatter)
+[![NuGet version](https://badge.fury.io/nu/Sketch7.MessagePack.MediaTypeFormatter.svg)](https://badge.fury.io/nu/Sketch7.MessagePack.MediaTypeFormatter)
 
 Media type formatter for MessagePack.
 

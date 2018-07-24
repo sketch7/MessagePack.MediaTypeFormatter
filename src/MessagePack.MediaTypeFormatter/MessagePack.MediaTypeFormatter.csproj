@@ -17,8 +17,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MessagePack" Version="1.7.3" />
-    <PackageReference Include="WinInsider.System.Net.Http.Formatting" Version="1.0.5" />
+    <PackageReference Include="MessagePack" Version="1.7.3.4" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.6" />
   </ItemGroup>
 
 </Project>

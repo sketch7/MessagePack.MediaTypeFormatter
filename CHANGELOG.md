@@ -5,9 +5,8 @@
 
 ## [2.0.1](https://github.com/sketch7/MessagePack.MediaTypeFormatter/compare/2.0.0...2.0.1) (2018-10-25)
 
-### Chore
+### Perf
 - **build:** build correctly as `Release` mode
-- **deps:** update `Microsoft.NET.Test.Sdk` to `15.9.0`
 
 
 ## [2.0.0](https://github.com/sketch7/MessagePack.MediaTypeFormatter/compare/1.0.0...2.0.0) (2018-07-24)

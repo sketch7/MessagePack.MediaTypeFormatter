@@ -9,6 +9,9 @@
 
 - **deps:** update `MessagePack` to `2.1.90`
 
+### BREAKING CHANGES
+- `IFormatterResolver` has been removed and changed with `MessagePackSerializerOptions` from `MessagePackMediaTypeFormatter`
+
 ## [2.0.1](https://github.com/sketch7/MessagePack.MediaTypeFormatter/compare/2.0.0...2.0.1) (2018-10-25)
 
 ### Perf

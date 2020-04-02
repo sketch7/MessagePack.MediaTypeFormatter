@@ -1,8 +1,9 @@
 #!/bin/sh
-echo -e "\e[36m ---- Packing ---- \e[39m"
 
-PACKAGE_VERSION=$(node -p "require('./package.json').version")
-VERSION_SUFFIX=dev
-echo version: $PACKAGE_VERSION
+THIS=`readlink -f "${BASH_SOURCE[0]}" 2>/dev/null||echo $0` # Full path of this script
+DIR=`dirname "${THIS}"` # This directory path
+# imports
+. "$DIR/version-builder.sh"
 
-dotnet pack -p:PackageVersion=$PACKAGE_VERSION-$VERSION_SUFFIX -p:AssemblyVersion=$PACKAGE_VERSION -o ../../ -c release --include-symbols
+echo -e "\e[36m ---- Packing '$VERSION' ---- \e[39m"
+dotnet pack -p:PackageVersion=$VERSION -p:AssemblyVersion=$PACKAGE_VERSION -o ./ -c release --include-symbols -p:SymbolPackageFormat=snupkg

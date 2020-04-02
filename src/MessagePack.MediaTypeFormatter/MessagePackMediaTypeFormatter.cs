@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MessagePack;
+using MessagePack.Resolvers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -6,7 +8,6 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using MessagePack;
 
 namespace Sketch7.MessagePack.MediaTypeFormatter
 {
@@ -16,7 +17,7 @@ namespace Sketch7.MessagePack.MediaTypeFormatter
 	public class MessagePackMediaTypeFormatter : System.Net.Http.Formatting.MediaTypeFormatter
 	{
 		private const string MediaType = "application/x-msgpack";
-		private readonly IFormatterResolver _resolver;
+		private readonly MessagePackSerializerOptions _options;
 
 		/// <summary>
 		/// Initializes a new instance with default formatter resolver.
@@ -29,11 +30,13 @@ namespace Sketch7.MessagePack.MediaTypeFormatter
 		/// <summary>
 		/// Initializes a new instance with the provided formatter resolver.
 		/// </summary>
-		/// <param name="resolver"></param>
-		public MessagePackMediaTypeFormatter(IFormatterResolver resolver)
+		/// <param name="options"></param>
+		public MessagePackMediaTypeFormatter(MessagePackSerializerOptions? options)
 		{
 			SupportedMediaTypes.Add(new MediaTypeHeaderValue(MediaType));
-			_resolver = resolver ?? MessagePackSerializer.DefaultResolver;
+			_options = options ?? MessagePackSerializerOptions.Standard
+				.WithCompression(MessagePackCompression.Lz4BlockArray)
+				.WithResolver(StandardResolverAllowPrivate.Instance);
 		}
 
 		/// <inheritdoc />
@@ -65,7 +68,7 @@ namespace Sketch7.MessagePack.MediaTypeFormatter
 		/// <inheritdoc />
 		public override Task<object> ReadFromStreamAsync(Type type, Stream readStream, HttpContent content, IFormatterLogger formatterLogger)
 		{
-			var result = MessagePackSerializer.NonGeneric.Deserialize(type, readStream, _resolver);
+			var result = MessagePackSerializer.Deserialize(type, readStream, _options);
 			return Task.FromResult(result);
 		}
 
@@ -73,7 +76,7 @@ namespace Sketch7.MessagePack.MediaTypeFormatter
 		public override Task WriteToStreamAsync(Type type, object value, Stream writeStream, HttpContent content,
 			TransportContext transportContext)
 		{
-			MessagePackSerializer.NonGeneric.Serialize(type, writeStream, value, _resolver);
+			MessagePackSerializer.Serialize(type, writeStream, value, _options);
 			return Task.CompletedTask;
 		}
 	}

@@ -1,0 +1,46 @@
+<Project>
+  <!-- Set the repository root into a variable -->
+  <PropertyGroup>
+    <SourceRoot>$(MSBuildThisFileDirectory)</SourceRoot>
+  </PropertyGroup>
+
+  <!-- Set common properties regarding assembly information and nuget packages -->
+  <PropertyGroup>
+    <Authors>stephen.lautier, clayton.lautier</Authors>
+    <Company>Sketch7</Company>
+    <Product>MessagePack.MediaTypeFormatter</Product>
+    <Copyright>© sketch7. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/sketch7/MessagePack.MediaTypeFormatter</PackageProjectUrl>
+    <PackageTags>messagepack mediatypeformatter http serializer</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/sketch7/MessagePack.MediaTypeFormatter.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>logo188x188.png</PackageIcon>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <None Include="$(SourceRoot)assets/logo188x188.png" Pack="true" Visible="false" PackagePath="/" />
+  </ItemGroup>
+
+  <!-- Common compile parameters -->
+  <PropertyGroup>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <NoWarn>$(NoWarn);1701;1702;1705;1591</NoWarn>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <!-- Shared Package Versions -->
+  <PropertyGroup>
+    <MicrosoftExtensionsVersion>2.1.*</MicrosoftExtensionsVersion>
+  </PropertyGroup>
+</Project>

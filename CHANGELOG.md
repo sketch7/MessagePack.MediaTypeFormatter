@@ -1,11 +1,18 @@
 # Changelog
 
-[*vNext*](https://github.com/sketch7/MessagePack.MediaTypeFormatter/compare/2.0.0...1.1.0) (201X-X-X)
+[*vNext*](https://github.com/sketch7/MessagePack.MediaTypeFormatter/compare/3.0.0...3.1.0) (201X-X-X)
 
+
+## [3.0.0](https://github.com/sketch7/MessagePack.MediaTypeFormatter/compare/2.0.1...3.0.0) (2020-04-02)
+
+### Features
+
+- **deps:** update `MessagePack` to `2.1.90`
 
 ## [2.0.1](https://github.com/sketch7/MessagePack.MediaTypeFormatter/compare/2.0.0...2.0.1) (2018-10-25)
 
 ### Perf
+
 - **build:** build correctly as `Release` mode
 
 

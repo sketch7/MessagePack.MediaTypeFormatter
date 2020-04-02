@@ -3,10 +3,10 @@ jobs:
   build:
     working_directory: /app
     docker:
-      - image: stephenlautier/netcore-docker-ci:2.1
+      - image: stephenlautier/netcore-docker-ci:3.1.3
     environment:
-      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
-      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "1"
+      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
     steps:
       - run:
           name: Print environment versions
@@ -25,24 +25,22 @@ jobs:
       - run:
           name: test
           command: npm test
+      - run:
+          name: Check if branch is publishable
+          command: |
+            if ! ([ $CIRCLE_BRANCH = "master" ] || [[ "$CIRCLE_BRANCH" =~ ^(([0-9]+|\.)+x)$ ]]); then
+              echo "Non-publishable branch; finishing build..."
+              circleci step halt
+            fi
       - deploy:
           name: Publish NuGet
           command: |
-            if [ "$CIRCLE_BRANCH" != "master" ]; then
-              echo -e "\e[33m Branch does not publish -- exit!"
-              exit
-            fi
-            . ./.circleci/utils.sh
+            export SKETCH7_NUGET_API_KEY=$API_KEY
 
-            if [ "$API_KEY" == "" ]; then
-              echo API_KEY environment variable not defined.
-              exit 1
-            fi
-
-            PACKAGE_VERSION=$(node -p "require('./package.json').version")
-            dotnet pack -p:PackageVersion=$PACKAGE_VERSION -p:AssemblyVersion=$PACKAGE_VERSION -o ../../ -c release --include-symbols
-            dotnet nuget push *.nupkg -k $API_KEY -s https://www.nuget.org/api/v2/package
-
-            print_title "git tag"
-            git tag $PACKAGE_VERSION
-            git push --tags
+            npm run publish:dev
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          context: nuget

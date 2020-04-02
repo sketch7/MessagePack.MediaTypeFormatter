@@ -36,7 +36,7 @@ namespace Sketch7.MessagePack.MediaTypeFormatter
 			SupportedMediaTypes.Add(new MediaTypeHeaderValue(MediaType));
 			_options = options ?? MessagePackSerializerOptions.Standard
 				.WithCompression(MessagePackCompression.Lz4BlockArray)
-				.WithResolver(StandardResolverAllowPrivate.Instance); ;
+				.WithResolver(StandardResolverAllowPrivate.Instance);
 		}
 
 		/// <inheritdoc />
